@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fdfffc ;
+    color: #011627;
+    font-family: 'Verdana', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 1.5em 0 1em;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin: 1.5em 0 .75em;
+}
+
+p {
+    line-height: 1.5;
+}
+
+li {
+    line-height: 1.5;
+    padding: .5em 0;
+}
+
+a {
+    cursor: pointer;
+    color: #16a085;
+}
+
+a.ext {
+    padding-right: 1.25em;
+    /* https://www.svgbackgrounds.com/tools/svg-to-css/ */
+    background-image: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="utf-8"%3F><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools --><svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Interface / External_Link"><path id="Vector" d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11" stroke="%2316a085" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>');
+    background-repeat: no-repeat;
+    background-position: right 4px;
+    background-size: 1em;
+}
+
+img {
+    max-width: 100%; /* EmpÃªche le dÃ©bordement des images */
+    height: auto; /* RÃ¨gle problÃ¨me des tailles saisies en HTML */
+    width: auto;
+}
+
+pre,
+code {
+    background-color: #2c3e50;
+    color: #2ecc71;
+    padding: 0.25em;
+}
+
+table {
+    font-size: 1rem;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #1abc9c;
+}
+table th,
+table td {
+    text-align: left;
+    padding: 8px;
+}
+
+table th {
+    padding-top: 11px;
+    padding-bottom: 11px;
+    background-color: #1abc9c;
+    color: #ecf0f1;
+}
+
+table tr:nth-child(2n+1) {
+    background-color: #bdc3c7;
+}
+
+/* Formulaires */
+
+/******************
+ FORMULAIRES
+******************/
+
+label {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: .5em;
+}
+
+button,
+input,
+textarea {
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+}
+
+button,
+input[type="text"],
+input[type="email"],
+textarea {
+    border: 2px solid #16a085;
+    padding: .5em;
+}
+
+button {
+    margin: 0 .5em;
+    color: #EBECF1;
+    background-color: #16a085;
+    border-color: #16a085;
+    border-style: solid;
+}
+
+button:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+textarea {
+    min-height: 10em;
+}
