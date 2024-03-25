@@ -9,6 +9,7 @@
 </head>
 <body>
 <h1>Vue.js - Les composants</h1>
+<h2>Présentation</h2>
 <p>Ce premier exercice a pour but de vous faire manipuler les composants Vue.js.</p>
 <p>Quelques caractéristiques des composants :</p>
 <ul>
@@ -27,16 +28,19 @@
     L'instruction <code>export default</code> en haut du fichier permet d'exporter
     le composant Vue sous forme de module.
 </p>
+<p>Le composant <code>GrandTitre</code> est un composant simple qui affiche un titre de niveau 1 en majuscules.
+    Il possède une propriété obligatoire <code>contenu</code> de type <code>String</code>,
+    qui permet de définir le contenu du titre.</p>
 <pre>
 export default {
     props: {
-        titre: {
+        contenu: {
             type: String,
             required: true
         }
     },
     template: `
-    &lt;h1&gt;{{ titre }}&lt;/h1&gt;
+    &lt;h1&gt;{{ titre.toUpperCase() }}&lt;/h1&gt;
     `
 }
 </pre>
@@ -48,75 +52,63 @@ export default {
     import GrandTitre from "./composants/GrandTitre.js";
 ...</pre>
 <p>Ensuite, il faut l'ajouter à l'application Vue via la propriété <code>components</code></p>
-<pre>const appli = Vue.createApp({
-        components: {
-            GrandTitre
-        },
-...</pre>
-<p>Enfin, il faut l'utiliser dans le de l'application <code>&#x3C;grand-titre titre=&#x22;Liste de courses&#x22;&#x3E;&#x3C;/grand-titre&#x3E;</code></p>
-
-
-<p>Tout ce travail a déjà été fait pour vous dans le fichier <code>index.html</code>.</p>
-
-
-<hr>
-
-<div id="monapp">
-    <grand-titre titre="Liste de courses"></grand-titre>
-<!--    <h2>Ajout d'un article</h2>-->
-<!--    <label for="article">Ajouter à la liste de courses</label>-->
-<!--    <input id="article" type="text" v-model="nouvelArticle">-->
-<!--    <button @click="ajouterArticle">Ajouter un article</button>-->
-
-<!--    <h2>Votre liste de courses</h2>-->
-<!--    <table>-->
-<!--        <tr>-->
-<!--            <th>Id</th>-->
-<!--            <th>Article</th>-->
-<!--            <th>Actions</th>-->
-<!--        </tr>-->
-<!--        <tr v-for="article in listeCourses" :key="article.id">-->
-<!--            <td>{{ article.id }}</td>-->
-<!--            <td>{{ article.libelle }}</td>-->
-<!--            <td>-->
-<!--                <a @click="supprimerArticle(article.id)">Supprimer</a>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--    </table>-->
-</div>
-<!-- Monte l'application sur la div #monapp -->
-<script type="module">
+<pre>&lt;script type="module"&gt;
     import GrandTitre from "./composants/GrandTitre.js";
 
     const appli = Vue.createApp({
         components: {
             GrandTitre
         },
-        data() {
-            return {
-                nouvelArticle: "",
-                dernierId: 4,
-                listeCourses: [
-                    {id: 1, libelle: "Pommes"},
-                    {id: 2, libelle: "Poires"},
-                    {id: 3, libelle: "Oranges"},
-                    {id: 4, libelle: "Bananes"}
-                ]
-            }
-        },
-        methods: {
-            ajouterArticle() {
-                if (this.nouvelArticle === "") {
-                    alert("Veuillez saisir un article");
-                    return;
-                }
+...</pre>
+<p>Et maintenant on peut l'utiliser dans notre application Vue !</p>
+<p>On ne peut l'utilser que dans <code>&#x3C;div id=&#x22;monapp&#x22;&#x3E;</code> ou est monté notre application Vue.</p>
+<p>Et voici comment on l'ajoute :</p>
+<pre>&#x3C;div id=&#x22;monapp&#x22;&#x3E;
+    &#x3C;grand-titre contenu=&#x22;Liste de courses&#x22;&#x3E;&#x3C;/grand-titre&#x3E;
+&#x3C;/div&#x3E;</pre>
+<p>Et oui, on l'utilise comme un simple élément HTML, on doit juste transformer son nom de PascalCase en kebab-case
+<code>GrandTitre => grand-titre</code> et le tour est joué</p>
+<p>La propriété <code>contenu</code> du composant se transforme en attribut et on lui passe simplement le texte
+    <code>contenu=&#x22;Liste de courses&#x22;&#x3E;</code>.</p>
 
-                this.listeCourses.push({id: ++this.dernierId, libelle: this.nouvelArticle});
-                this.nouvelArticle = "";
-            },
-            supprimerArticle(id) {
-                this.listeCourses = this.listeCourses.filter(art => art.id !== id);
-            }
+<p>Tout ce travail a déjà été fait pour vous dans le fichier <code>index.html</code>.</p>
+
+<h2>Exercice</h2>
+<p>Créez un composant <code>PetitLien</code> qui affiche un lien hypertexte</p>
+<p>Il possède une propriété obligatoire <code>lien</code> de type <code>String</code>,
+    qui permet de définir l'URL du lien,
+    et une propriété optionnelle <code>contenu</code> de type <code>String</code>,
+    qui permet de définir le texte du lien.</p>
+<p>Si la propriété <code>contenu</code> n'est pas définie, le texte du lien doit être l'URL.</p>
+<p>Voici quelques exemples d'utilisation :</p>
+<pre>
+&#x3C;petit-lien lien=&#x22;https://google.ch&#x22; contenu=&#x22;Google&#x22;&#x3E;&#x3C;/petit-lien&#x3E;
+&#x3C;petit-lien lien=&#x22;https://microsoft.ch&#x22;&#x3E;&#x3C;/petit-lien&#x3E;
+ -- Résultats --
+&#x3C;a href=&#x22;https://google.ch&#x22;&#x3E;Google&#x3C;/a&#x3E;
+&#x3C;a href=&#x22;https://microsoft.ch&#x22;&#x3E;https://microsoft.ch&#x3C;/a&#x3E;
+</pre>
+
+<hr>
+
+<div id="monapp">
+    <grand-titre contenu="Liste de courses"></grand-titre>
+
+    <ul>
+        <li><petit-lien lien="https://google.ch" contenu="Google"></petit-lien></li>
+        <li><petit-lien lien="https://microsoft.ch"></petit-lien></li>
+        <li><petit-lien lien="https://apple.ch" contenu="La pomme"></petit-lien></li>
+    </ul>
+</div>
+<!-- Monte l'application sur la div #monapp -->
+<script type="module">
+    import GrandTitre from "./composants/GrandTitre.js";
+    import PetitLien from "./composants/PetitLien.js";
+
+    const appli = Vue.createApp({
+        components: {
+            GrandTitre,
+            PetitLien
         }
     }).mount('#monapp')
 </script>
