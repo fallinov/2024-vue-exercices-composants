@@ -8,132 +8,44 @@
     <script src="js/vue.global.js"></script>
 </head>
 <body>
-<h1>Vue.js - Méthodes et événements</h1>
-<h2>Instructions</h2>
+<h1>Vue.js - Les composants</h1>
 
-<p>Modifier l'application Vue de liste de courses existante pour permettre d'ajouter et supprimer des articles.</p>
-<p>La liste de courses <code>listeCourses</code> est un tableau d'objets avec les propriétés suivantes :</p>
-<ul>
-    <li><code>id</code> : un identifiant unique</li>
-    <li><code>libelle</code> : le nom de l'article</li>
-</ul>
-<p>Les id des articles sont générés à partir du compteur <code>dernierId</code> qu'il faudra incrémenter à chaque ajout.
-</p>
-<p>Pour ajouter un nouvel article, l'utilisateur doit saisir le nom de l'article dans le champ texte et cliquer sur le
-    bouton "Ajouter un article".</p>
-<p>Pour supprimer un article, l'utilisateur doit cliquer sur le lien "Supprimer" à côté de l'article à supprimer.</p>
-
-<h3>Étapes</h3>
-<ol>
-    <li>Créer une donnée <code>nouvelArticle</code> dans Vue et la lier au champ de formulaire
-        <code>&lt;input id="article" type="text"&gt;</code> avec la directive
-        <a class="ext" href="https://vuejs.org/guide/components/v-model.html#basic-usage">v-model</a></li>
-    <li>Créer une <a class="ext" href="https://vuejs.org/api/options-state.html#methods">méthode</a>
-        <code>ajouterArticle()</code> qui ajoute un article à la liste de courses
-        <ol>
-            <li>Si le champ texte est vide, afficher une alerte <code>"Veuillez saisir un article"</code>
-                et quitter la méthode.
-            </li>
-            <li>Créer un objet avec les propriétés <code>id</code> et <code>libelle</code>
-                en incrémentant <code>dernierId</code>
-                et en récupérant la valeur saisie par l'utilisateur dans le champ texte.
-            </li>
-            <li>Ajouter l'objet au tableau <code>listeCourses</code> avec
-                <a class="ext"
-                   href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/push">
-                    push()</a></li>
-            <li>Vider le champ texte pour faciliter la prochaine saisie de l'utilisateur.</li>
-        </ol>
-    </li>
-
-    <li>Appeler la méthode <code>ajouterArticle</code> lors du clic sur le bouton "Ajouter un article"</li>
-    <li>Créer une méthode supprimerArticle(idArticle) qui supprime un article de la liste de courses
-        <ol>
-            <li>Utiliser la méthode <a class="ext"
-                                       href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">filter()</a>
-                pour créer un nouveau tableau sans l'article à supprimer
-            </li>
-            <li>Remplacer le tableau <code>listeCourses</code> par le nouveau tableau</li>
-        </ol>
-    </li>
-    <li>Appeler la méthode <code>supprimerArticle</code> lors du clic sur les liens "Supprimer".
-        Ne pas oublier de passer l'id de l'article à supprimer en argument de la méthode <code>supprimerArticle(idArticle)</code>.
-    </li>
-</ol>
-
-<h3>Challenge</h3>
-<p>Pour les plus courageux, voici quelques idées d'améliorations à mettre en place :</p>
-<ul>
-    <li>Créer une méthode <code>viderListe()</code> qui permet de vider la liste de courses. Ajouter un bouton vider après le bouton
-        "Ajouter un article" pour appeler la méthode <code>viderListe</code>.</li>
-    <li>Créer une méthode <code>trierListeNom()</code> qui permet de trier la liste de courses par ordre alphabétique.
-        Appeler cette méthode lors du clic sur l'étiquette "Article" <code>&lt;th&gt;Article&lt;/th&gt;</code> du tableau.
-        Utiliser la méthode
-        <a class="ext" href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">sort()</a>
-        pour trier le tableau.
-    </li>
-    <li>Faire la même chose pour la colonne des Ids en créant une méthode <code>trierListeId()</code>.</li>
-    <li>Améliorer vos tris pour inverser l'ordre de tri à chaque clic sur les étiquettes "Article" et "Id"
-        et en passant le sens de tri en argument de la méthode.
-        <br>
-        Ex: <code>trierListeNom('ASC')</code> ou <code>trierListeNom('DESC')</code>.
-    </li>
-</ul>
 
 <hr>
 
 <div id="monapp">
-    <h2>Ajout d'un article</h2>
-    <label for="article">Ajouter à la liste de courses</label>
-    <input id="article" type="text" v-model="nouvelArticle">
-    <button @click="ajouterArticle">Ajouter un article</button>
+    <grand-titre titre="Liste de courses"></grand-titre>
+<!--    <h2>Ajout d'un article</h2>-->
+<!--    <label for="article">Ajouter à la liste de courses</label>-->
+<!--    <input id="article" type="text" v-model="nouvelArticle">-->
+<!--    <button @click="ajouterArticle">Ajouter un article</button>-->
 
-    <h2>Votre liste de courses</h2>
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Article</th>
-            <th>Actions</th>
-        </tr>
-        <tr v-for="article in listeCourses" :key="article.id">
-            <td>{{ article.id }}</td>
-            <td>{{ article.libelle }}</td>
-            <td>
-                <a @click="supprimerArticle(article.id)">Supprimer</a>
-            </td>
-        </tr>
-    </table>
+<!--    <h2>Votre liste de courses</h2>-->
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <th>Id</th>-->
+<!--            <th>Article</th>-->
+<!--            <th>Actions</th>-->
+<!--        </tr>-->
+<!--        <tr v-for="article in listeCourses" :key="article.id">-->
+<!--            <td>{{ article.id }}</td>-->
+<!--            <td>{{ article.libelle }}</td>-->
+<!--            <td>-->
+<!--                <a @click="supprimerArticle(article.id)">Supprimer</a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
 </div>
 
-<script>
-    const appli = Vue.createApp({
-        data() {
-            return {
-                nouvelArticle: "",
-                dernierId: 4,
-                listeCourses: [
-                    {id: 1, libelle: "Pommes"},
-                    {id: 2, libelle: "Poires"},
-                    {id: 3, libelle: "Oranges"},
-                    {id: 4, libelle: "Bananes"}
-                ]
-            }
-        },
-        methods: {
-            ajouterArticle() {
-                if (this.nouvelArticle === "") {
-                    alert("Veuillez saisir un article");
-                    return;
-                }
+<!-- Application principale Vue -->
+<script src="./js/main.js"></script>
 
-                this.listeCourses.push({id: ++this.dernierId, libelle: this.nouvelArticle});
-                this.nouvelArticle = "";
-            },
-            supprimerArticle(id) {
-                this.listeCourses = this.listeCourses.filter(art => art.id !== id);
-            }
-        }
-    }).mount("#monapp");
+<!-- Importation des composants -->
+<script src="./composants/GrandTitre.js"></script>
+
+<!-- Monte l'application sur la div #monapp -->
+<script>
+    appli.mount('#monapp')
 </script>
 </body>
 </html>
