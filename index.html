@@ -9,6 +9,54 @@
 </head>
 <body>
 <h1>Vue.js - Les composants</h1>
+<p>Ce premier exercice a pour but de vous faire manipuler les composants Vue.js.</p>
+<p>Quelques caractéristiques des composants :</p>
+<ul>
+    <li>Un composant est une <strong>entité réutilisable</strong> qui regroupe un ensemble
+        de propriétés, de méthodes et de données.</li>
+    <li>Un composant peut être une simple balise HTML ou un ensemble de balises HTML.</li>
+    <li>Un composant peut être utilisé plusieurs fois dans une même page.</li>
+    <li>Un composant peut être composé de plusieurs composants.</li>
+</ul>
+<p>Il existe différentes façons de déclarer un composant. Dans ces exercices, nous utiliserons
+    les <strong>modules JavaScript</strong>.</p>
+<p>Les modules JavaScript permettent de découper le code en plusieurs fichiers pour une meilleure lisibilité et une meilleure maintenance.</p>
+<p>Les modules représentant des composants Vue seront sauvegardés dans le dossier <code>composants/</code>.
+    Le nom du fichier d'un composant doit être écrit en <code>PascalCase</code>.</p>
+<p>Un composant d'exemple <code>GrandTitre</code> est déjà créé dans le fichier <code>composants/GrandTitre.js</code>.
+    L'instruction <code>export default</code> en haut du fichier permet d'exporter
+    le composant Vue sous forme de module.
+</p>
+<pre>
+export default {
+    props: {
+        titre: {
+            type: String,
+            required: true
+        }
+    },
+    template: `
+    &lt;h1&gt;{{ titre }}&lt;/h1&gt;
+    `
+}
+</pre>
+<p>Pour utiliser les modules JavaScript, il faut l'annoncer lors de l'ajout du JavaScript au document HTML :
+    <code>&lt;script type="module"&gt;</code></p>
+</p>
+<p>Pour utiliser un module, il faut l'importer au début du script de cette manière</p>
+<pre>&lt;script type="module"&gt;
+    import GrandTitre from "./composants/GrandTitre.js";
+...</pre>
+<p>Ensuite, il faut l'ajouter à l'application Vue via la propriété <code>components</code></p>
+<pre>const appli = Vue.createApp({
+        components: {
+            GrandTitre
+        },
+...</pre>
+<p>Enfin, il faut l'utiliser dans le de l'application <code>&#x3C;grand-titre titre=&#x22;Liste de courses&#x22;&#x3E;&#x3C;/grand-titre&#x3E;</code></p>
+
+
+<p>Tout ce travail a déjà été fait pour vous dans le fichier <code>index.html</code>.</p>
 
 
 <hr>
@@ -36,16 +84,41 @@
 <!--        </tr>-->
 <!--    </table>-->
 </div>
-
-<!-- Application principale Vue -->
-<script src="./js/main.js"></script>
-
-<!-- Importation des composants -->
-<script src="./composants/GrandTitre.js"></script>
-
 <!-- Monte l'application sur la div #monapp -->
-<script>
-    appli.mount('#monapp')
+<script type="module">
+    import GrandTitre from "./composants/GrandTitre.js";
+
+    const appli = Vue.createApp({
+        components: {
+            GrandTitre
+        },
+        data() {
+            return {
+                nouvelArticle: "",
+                dernierId: 4,
+                listeCourses: [
+                    {id: 1, libelle: "Pommes"},
+                    {id: 2, libelle: "Poires"},
+                    {id: 3, libelle: "Oranges"},
+                    {id: 4, libelle: "Bananes"}
+                ]
+            }
+        },
+        methods: {
+            ajouterArticle() {
+                if (this.nouvelArticle === "") {
+                    alert("Veuillez saisir un article");
+                    return;
+                }
+
+                this.listeCourses.push({id: ++this.dernierId, libelle: this.nouvelArticle});
+                this.nouvelArticle = "";
+            },
+            supprimerArticle(id) {
+                this.listeCourses = this.listeCourses.filter(art => art.id !== id);
+            }
+        }
+    }).mount('#monapp')
 </script>
 </body>
 </html>

@@ -1,13 +1,12 @@
-// solution
-appli.component('GrandTitre', {
-    props: {
-        titre: {
-            type: String,
-            required: true
+export default { // Exportation du module
+    props: { // Propriétés du composant
+        titre: { // Nom de la propriété
+            type: String, // Type de la propriété
+            required: true // Propriété obligatoire
         }
     },
-    template:
-    /*html*/
-    `<h1>{{ titre }}</h1>`
-})
-// solution
+    // Contenu HTML du composant
+    template: `
+    <h1>{{ titre }}</h1>
+    `
+}
