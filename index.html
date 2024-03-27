@@ -50,7 +50,6 @@ export default {
 </pre>
 <p>Pour utiliser les modules JavaScript, il faut l'annoncer lors de l'ajout du JavaScript au document HTML :
     <code>&lt;script type="module"&gt;</code></p>
-</p>
 <p>Pour utiliser un module, il faut l'importer au début du script de cette manière</p>
 <pre>&lt;script type="module"&gt;
     import GrandTitre from "./composants/GrandTitre.js";
@@ -64,8 +63,8 @@ export default {
             GrandTitre
         },
 ...</pre>
-<p>Et maintenant on peut l'utiliser dans notre application Vue !</p>
-<p>On ne peut l'utilser que dans <code>&#x3C;div id=&#x22;monapp&#x22;&#x3E;</code> ou est monté notre application Vue.</p>
+<p>Et maintenant, on peut l'utiliser dans notre application Vue !</p>
+<p>On ne peut l'utiliser que dans <code>&#x3C;div id=&#x22;monapp&#x22;&#x3E;</code> ou est monté notre application Vue.</p>
 <p>Et voici comment on l'ajoute :</p>
 <pre>&#x3C;div id=&#x22;monapp&#x22;&#x3E;
     &#x3C;grand-titre contenu=&#x22;Liste de courses&#x22;&#x3E;&#x3C;/grand-titre&#x3E;
@@ -74,7 +73,7 @@ export default {
 <code>GrandTitre => grand-titre</code> et le tour est joué</p>
 <p>La propriété <code>contenu</code> du composant se transforme en attribut et on lui passe simplement le texte
     <code>contenu=&#x22;Liste de courses&#x22;&#x3E;</code>.</p>
-<p>Les donneées passées à <code>contenu</code> sont statiques, si on veut lui passer des données dynamiques, du JavaScipt,
+<p>Les données passées à <code>contenu</code> sont statiques, si on veut lui passer des données dynamiques, du JavaScipt,
     il faut ajouter <code>:</code> devant le nom de la propriété : <br>
     <code> &#x3C;grand-titre :contenu=&#x22;'Nous sommes le: ' + Date()&#x22;&#x3E;&#x3C;/grand-titre&#x3E;</code>
 </p>
@@ -157,7 +156,7 @@ et utiliser la directive <code>v-for</code> pour afficher tous les liens.</p>
         voici comment on peut ler faire avec les événements Vue</p>
     <ul>
         <li><a class="ext" href="https://fr.vuejs.org/guide/essentials/event-handling#accessing-event-argument-in-inline-handlers">
-            En récuréant l'objet événement</a></li>
+            En récupérant l'objet événement</a></li>
         <li><a class="ext" href="https://fr.vuejs.org/guide/essentials/event-handling#event-modifiers">
             Avec les modificateurs d'événement</a> (mon préféré)</li>
     </ul>
