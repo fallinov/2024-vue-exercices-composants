@@ -149,72 +149,20 @@ et utiliser la directive <code>v-for</code> pour afficher tous les liens.</p>
 
 <div id="monapp">
     <grand-titre contenu="Liste de courses"></grand-titre>
-    <h2>Exercice 1</h2>
-    <ul>
-        <li><petit-lien lien="https://google.ch" contenu="Google"></petit-lien></li>
-        <li><petit-lien lien="https://microsoft.ch"></petit-lien></li>
-        <li><petit-lien lien="https://apple.ch" contenu="La pomme"></petit-lien></li>
-    </ul>
-    <h2>Exercice 2</h2>
-    <ul>
-        <li v-for="lien in liens" :key="lien.lien">
-            <petit-lien :lien="lien.lien" :contenu="lien.contenu"></petit-lien>
-        </li>
-    </ul>
+
+
 </div>
 <!-- Monte l'application sur la div #monapp -->
 <script type="module">
     import GrandTitre from "./composants/GrandTitre.js";
-    import PetitLien from "./composants/PetitLien.js";
 
     const appli = Vue.createApp({
         components: {
             GrandTitre,
-            PetitLien
         },
         data() {
             return {
-                liens: [
-                    {
-                        lien: 'https://google.ch',
-                        contenu: 'Google'
-                    },
-                    {
-                        lien: 'https://microsoft.ch'
-                    },
-                    {
-                        lien: 'https://apple.ch',
-                        contenu: 'La pomme'
-                    },
-                    {
-                        lien: 'https://facebook.ch',
-                        contenu: 'Facebook'
-                    },
-                    {
-                        lien: 'https://twitter.ch',
-                        contenu: 'Twitter'
-                    },
-                    {
-                        lien: 'https://instagram.ch',
-                        contenu: 'Instagram'
-                    },
-                    {
-                        lien: 'https://linkedin.ch',
-                        contenu: 'LinkedIn'
-                    },
-                    {
-                        lien: 'https://youtube.ch',
-                        contenu: 'YouTube'
-                    },
-                    {
-                        lien: 'https://amazon.ch',
-                        contenu: 'Amazon'
-                    },
-                    {
-                        lien: 'https://ebay.ch',
-                        contenu: 'eBay'
-                    }
-                ]
+                msg: 'Hello Vue !',
             }
         }
     }).mount('#monapp')
