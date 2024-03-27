@@ -153,6 +153,14 @@ et utiliser la directive <code>v-for</code> pour afficher tous les liens.</p>
     <p>Si l'utilisateur clique sur <code>Annuler</code>, rien ne se passe.</p>
     <p>Pour ouvrir un lien en JavaScript, on utilise la méthode
         <a class="ext" href="https://developer.mozilla.org/fr/docs/Web/API/Window/open">window.open(url, target)</a></p>
+    <p>Il faudra également penser à stopper l'envoi "naturel" du lien, avec <code>preventDefault()</code>,
+        voici comment on peut ler faire avec les événements Vue</p>
+    <ul>
+        <li><a class="ext" href="https://fr.vuejs.org/guide/essentials/event-handling#accessing-event-argument-in-inline-handlers">
+            En récuréant l'objet événement</a></li>
+        <li><a class="ext" href="https://fr.vuejs.org/guide/essentials/event-handling#event-modifiers">
+            Avec les modificateurs d'événement</a> (mon préféré)</li>
+    </ul>
     <p>Voici un exemple de composant avec une méthode :</p>
 <pre>
 export default { // Exportation du module
@@ -190,19 +198,16 @@ export default { // Exportation du module
             <petit-lien :lien="lien.lien" :contenu="lien.contenu"></petit-lien>
         </li>
     </ul>
-    <coucou prenom="Steve"></coucou>
 </div>
 <!-- Monte l'application sur la div #monapp -->
 <script type="module">
     import GrandTitre from "./composants/GrandTitre.js";
     import PetitLien from "./composants/PetitLien.js";
-    import Coucou from "./composants/Coucou.js";
 
     const appli = Vue.createApp({
         components: {
             GrandTitre,
-            PetitLien,
-            Coucou
+            PetitLien
         },
         data() {
             return {
