@@ -11,7 +11,8 @@
 <h1>Vue.js - Les composants</h1>
 <h2>Présentation</h2>
 <p>Ce premier exercice a pour but de vous faire manipuler les composants Vue.js.</p>
-<p>Quelques caractéristiques des composants :</p>
+<p>Quelques caractéristiques des
+    <a class="ext" href="https://fr.vuejs.org/guide/essentials/component-basics.html#components-basics">composants</a> :</p>
 <ul>
     <li>Un composant est une <strong>entité réutilisable</strong> qui regroupe un ensemble
         de propriétés, de méthodes et de données.</li>
@@ -29,8 +30,11 @@
     le composant Vue sous forme de module.
 </p>
 <p>Le composant <code>GrandTitre</code> est un composant simple qui affiche un titre de niveau 1 en majuscules.
-    Il possède une propriété obligatoire <code>contenu</code> de type <code>String</code>,
-    qui permet de définir le contenu du titre.</p>
+    Il possède une propriété (props) <code>contenu</code> de type <code>String</code> qui est obligatoire. Cette propriété
+    permet de définir le contenu du titre.</p>
+<p>Les <a class="ext" href="https://fr.vuejs.org/guide/essentials/component-basics.html#passing-props">
+propriétés d'un composant</a> permettent de passer des données à un composant, comme les paramètres d'une fonction.</p>
+<p>Elles sont définies dans l'objet <code>props</code> du composant.</p>
 <pre>
 export default {
     props: {
@@ -70,10 +74,14 @@ export default {
 <code>GrandTitre => grand-titre</code> et le tour est joué</p>
 <p>La propriété <code>contenu</code> du composant se transforme en attribut et on lui passe simplement le texte
     <code>contenu=&#x22;Liste de courses&#x22;&#x3E;</code>.</p>
+<p>Les donneées passées à <code>contenu</code> sont statiques, si on veut lui passer des données dynamiques, du JavaScipt,
+    il faut ajouter <code>:</code> devant le nom de la propriété : <br>
+    <code> &#x3C;grand-titre :contenu=&#x22;'Nous sommes le: ' + Date()&#x22;&#x3E;&#x3C;/grand-titre&#x3E;</code>
+</p>
 
 <p>Tout ce travail a déjà été fait pour vous dans le fichier <code>index.html</code>.</p>
 
-<h2>Exercice</h2>
+<h2>Exercice 1</h2>
 <p>Créez un composant <code>PetitLien</code> qui affiche un lien hypertexte</p>
 <p>Il possède une propriété obligatoire <code>lien</code> de type <code>String</code>,
     qui permet de définir l'URL du lien,
@@ -89,15 +97,69 @@ export default {
 &#x3C;a href=&#x22;https://microsoft.ch&#x22;&#x3E;https://microsoft.ch&#x3C;/a&#x3E;
 </pre>
 
+<h2>Exercice 2</h2>
+<p>Ajouter le tableau de liens suivant à l'application Vue
+et utiliser la directive <code>v-for</code> pour afficher tous les liens.</p>
+
+<pre>
+[
+    {
+        lien: 'https://google.ch',
+        contenu: 'Google'
+    },
+    {
+        lien: 'https://microsoft.ch'
+    },
+    {
+        lien: 'https://apple.ch',
+        contenu: 'La pomme'
+    },
+    {
+        lien: 'https://facebook.ch',
+        contenu: 'Facebook'
+    },
+    {
+        lien: 'https://twitter.ch',
+        contenu: 'Twitter'
+    },
+    {
+        lien: 'https://instagram.ch',
+        contenu: 'Instagram'
+    },
+    {
+        lien: 'https://linkedin.ch',
+        contenu: 'LinkedIn'
+    },
+    {
+        lien: 'https://youtube.ch',
+        contenu: 'YouTube'
+    },
+    {
+        lien: 'https://amazon.ch',
+        contenu: 'Amazon'
+    },
+    {
+        lien: 'https://ebay.ch',
+        contenu: 'eBay'
+    }
+]
+</pre>
+
 <hr>
 
 <div id="monapp">
     <grand-titre contenu="Liste de courses"></grand-titre>
-
+    <h2>Exercice 1</h2>
     <ul>
         <li><petit-lien lien="https://google.ch" contenu="Google"></petit-lien></li>
         <li><petit-lien lien="https://microsoft.ch"></petit-lien></li>
         <li><petit-lien lien="https://apple.ch" contenu="La pomme"></petit-lien></li>
+    </ul>
+    <h2>Exercice 2</h2>
+    <ul>
+        <li v-for="lien in liens" :key="lien.lien">
+            <petit-lien :lien="lien.lien" :contenu="lien.contenu"></petit-lien>
+        </li>
     </ul>
 </div>
 <!-- Monte l'application sur la div #monapp -->
@@ -109,6 +171,51 @@ export default {
         components: {
             GrandTitre,
             PetitLien
+        },
+        data() {
+            return {
+                liens: [
+                    {
+                        lien: 'https://google.ch',
+                        contenu: 'Google'
+                    },
+                    {
+                        lien: 'https://microsoft.ch'
+                    },
+                    {
+                        lien: 'https://apple.ch',
+                        contenu: 'La pomme'
+                    },
+                    {
+                        lien: 'https://facebook.ch',
+                        contenu: 'Facebook'
+                    },
+                    {
+                        lien: 'https://twitter.ch',
+                        contenu: 'Twitter'
+                    },
+                    {
+                        lien: 'https://instagram.ch',
+                        contenu: 'Instagram'
+                    },
+                    {
+                        lien: 'https://linkedin.ch',
+                        contenu: 'LinkedIn'
+                    },
+                    {
+                        lien: 'https://youtube.ch',
+                        contenu: 'YouTube'
+                    },
+                    {
+                        lien: 'https://amazon.ch',
+                        contenu: 'Amazon'
+                    },
+                    {
+                        lien: 'https://ebay.ch',
+                        contenu: 'eBay'
+                    }
+                ]
+            }
         }
     }).mount('#monapp')
 </script>
