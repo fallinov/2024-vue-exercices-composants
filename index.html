@@ -145,6 +145,35 @@ et utiliser la directive <code>v-for</code> pour afficher tous les liens.</p>
 ]
 </pre>
 
+<h2>Exercice 3</h2>
+<p>Dans le composant <code>PetitLien</code>, créer une méthode <code>confirmer</code> qui affiche
+    <a class="ext" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm">une fenêtre de confirmation</a>
+    avec le texte <code>"T'es sûr de vouloir ouvrir ce lien:  ***lien du site*** "</code> lorsque l'utilisateur clique sur le lien.</p>
+    <p>Si l'utilisateur clique sur <code>OK</code>, le lien est ouvert dans un nouvel onglet.</p>
+    <p>Si l'utilisateur clique sur <code>Annuler</code>, rien ne se passe.</p>
+    <p>Pour ouvrir un lien en JavaScript, on utilise la méthode
+        <a class="ext" href="https://developer.mozilla.org/fr/docs/Web/API/Window/open">window.open(url, target)</a></p>
+    <p>Voici un exemple de composant avec une méthode :</p>
+<pre>
+export default { // Exportation du module
+    props: {
+        prenom: {
+            type: String,
+            required: true
+        },
+    },
+    methods: {
+        coucou() {
+            alert(&quot;Coucou &quot; + this.prenom);
+        }
+    },
+    // Contenu HTML du composant
+    template: `
+    &lt;button @click=&quot;coucou&quot;&gt;Coucou&lt;/button&gt;
+    `
+}
+</pre>
+
 <hr>
 
 <div id="monapp">
@@ -161,16 +190,19 @@ et utiliser la directive <code>v-for</code> pour afficher tous les liens.</p>
             <petit-lien :lien="lien.lien" :contenu="lien.contenu"></petit-lien>
         </li>
     </ul>
+    <coucou prenom="Steve"></coucou>
 </div>
 <!-- Monte l'application sur la div #monapp -->
 <script type="module">
     import GrandTitre from "./composants/GrandTitre.js";
     import PetitLien from "./composants/PetitLien.js";
+    import Coucou from "./composants/Coucou.js";
 
     const appli = Vue.createApp({
         components: {
             GrandTitre,
-            PetitLien
+            PetitLien,
+            Coucou
         },
         data() {
             return {
