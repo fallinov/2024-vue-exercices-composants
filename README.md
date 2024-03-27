@@ -1,6 +1,6 @@
 # Exercices Vue.js 3 sur les composants
 
-Vous trouverez dans ce dépôt **trois exercices et leurs solutions**.
+Vous trouverez dans ce dépôt **des exercices et leurs solutions**.
 
 Les exercices sont divisés en plusieurs parties, **chacune correspondant à une branche de ce dépôt**.
 
@@ -19,14 +19,12 @@ entre les balises `<script>` et `</script>`.
 Vous trouverez dans les données de nombreux **liens vers les documentations** JavaScript et Vue.js,
 n'hésitez pas à les consulter pour vous aider dans la résolution des exercices.
 
-J'espère que ces exercices vous aideront à mieux comprendre les bases de Vue.js 3.
+J'espère que ces exercices vous aideront à mieux comprendre le fonctionnement des composants Vue.js 3.
 
 Bonne chance !
 
 Steve Fallet
 ## Exercices
 
-1. Vue.js - Les bases
-2. Vue.js - Tableaux et boucles
-3. Vue.js - Méthodes et événements
+1. Vue.js - Premier comosant
 
