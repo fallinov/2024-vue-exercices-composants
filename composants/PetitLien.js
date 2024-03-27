@@ -11,7 +11,7 @@ export default { // Exportation du module
     },
     methods: {
         confirmer() {
-            if(confirm("T'es sûr de vouloir ouvrir ce lien: " + this.lien + " ?")) {
+            if(window.confirm("T'es sûr de vouloir ouvrir ce lien: " + this.lien + " ?")) {
                 window.open(this.lien, "_blank");
             }
         }
