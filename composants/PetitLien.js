@@ -21,6 +21,6 @@ export default { // Exportation du module
     },
     // Contenu HTML du composant
     template: `
-    <a :href="lien" @click.prevent="coucou('steve')">{{ contenu || lien }}</a>
+    <a :href="lien" @click.prevent="confirmer">{{ contenu || lien }}</a>
     `
 }
